@@ -16,6 +16,7 @@ class User:
         self.email = email
         self.tasks = tasks if tasks else []
 
+    
     async def save_user(self, filename):
         users = []
         try:
@@ -36,6 +37,7 @@ class User:
             writer = csv.writer(file)
             writer.writerows(users)
 
+    
     async def save_tasks(self, filename):
         async with aiofiles.open(filename, mode='a', newline='') as file:
             writer = csv.writer(file)
@@ -109,6 +111,7 @@ class TaskManagerApp(App):
             for username, user_tasks in tasks.items():
                 task_writer.writerows(user_tasks)
 
+    
     def update_tasks(self, dt=None):
         self.task_list.clear_widgets()
         if self.current_user:
